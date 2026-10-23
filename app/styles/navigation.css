@@ -1,0 +1,162 @@
+/* Navigation: shared TastePassport presentation. */
+
+.progressive-app .workspace-topbar {
+  position: relative;
+  margin-top: 16px;
+  z-index: 30;
+  height: var(--header-height);
+  background: #fffdf4ed;
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--ui-border);
+  border-radius: 18px;
+  box-shadow: 0 10px 28px #193e3112;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 24px;
+  padding-inline: clamp(16px, 3vw, 40px);
+}
+
+.header-controls, .header-controls .account-control, .header-controls .topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  min-width: 0;
+}
+
+.header-controls {
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  align-self: stretch;
+}
+
+.header-controls .account-control,
+.header-controls .topbar-actions {
+  flex-wrap: nowrap;
+}
+
+.header-controls .topbar-actions {
+  gap: 10px;
+}
+
+.header-controls button, .header-controls .current-city {
+  white-space: nowrap;
+}
+
+.progressive-app .brand {
+  white-space: nowrap;
+}
+
+.progressive-app .topbar-caption {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.progressive-app .brand {
+  font-size: 23px;
+  letter-spacing: -1px;
+  gap: 12px;
+}
+
+.progressive-app .brand-symbol {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px #214f3e20;
+}
+
+.progressive-app .brand small {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.progressive-app .topbar-caption {
+  font-size: 16px;
+  color: var(--ui-muted);
+}
+
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 14px 20px;
+  border-radius: 12px;
+  color: #fff;
+  background: var(--ui-action);
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+#passport-content:focus {
+  outline: none;
+}
+
+@media (max-width: 1000px) {
+  .progressive-app .topbar-caption {
+    display: none;
+  }
+  .progressive-app .workspace-topbar {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 16px;
+  }
+  .header-controls .current-city {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .progressive-app .workspace-topbar {
+    height: var(--header-height);
+    margin-top: 10px;
+    gap: 8px;
+    padding-inline: 16px;
+  }
+  .progressive-app .brand {
+    font-size: 18px;
+    gap: 8px;
+  }
+  .progressive-app .brand-symbol {
+    width: 34px;
+    height: 38px;
+    border-radius: 11px;
+  }
+  .header-controls, .header-controls .topbar-actions, .header-controls .account-control {
+    gap: 4px;
+  }
+  .header-controls .save-passport {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .progressive-app .workspace-topbar {
+    grid-template-columns: 1fr;
+    height: var(--header-height);
+    margin-top: 8px;
+    padding: 8px 12px;
+    gap: 2px;
+  }
+  .progressive-app .brand {
+    margin-right: auto;
+    font-size: 16px;
+  }
+  .progressive-app .brand-symbol {
+    width: 30px;
+    height: 34px;
+  }
+  .header-controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+.new-passport-short { display: none; }
+@media (max-width: 640px) {
+  .new-passport-label { display: none; }
+  .new-passport-short { display: inline; }
+}

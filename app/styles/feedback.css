@@ -1,0 +1,12 @@
+/* Friendly, truthful loading feedback and a single dismissible notification. */
+.toast-notice { position: fixed; z-index: 60; bottom: max(24px, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; width: max-content; max-width: min(580px, calc(100vw - 32px)); padding: 12px 16px; background: #183e33; color: #fffef5; border: 1px solid #446455; border-radius: 16px; box-shadow: 0 12px 40px #183e3330; font-size: 14px; line-height: 1.6; }
+.toast-notice > span { overflow-wrap: anywhere; }
+.toast-notice .icon-button { color: inherit; min-width: 44px; min-height: 44px; }
+.toast-notice.error { background: #653d31; border-color: #956858; }
+.progressive-app .journey-loading { position: fixed; top: calc(var(--header-height) + 12px); left: 50%; transform: translateX(-50%); z-index: 40; display: flex; align-items: center; gap: 16px; width: min(540px, calc(100vw - 32px)); margin: 0; padding: 18px 22px; border: 1px solid var(--ui-border); border-radius: 20px; background: var(--ui-surface); box-shadow: 0 12px 45px #183e3320; }
+.journey-loading strong { font: 23px/1.25 Georgia, serif; }
+.journey-loading p { font-size: 13px; color: var(--ui-muted); line-height: 1.6; margin-top: 6px; }
+.journey-spinner { display: grid; place-items: center; flex: 0 0 48px; height: 48px; border: 2px solid #dce6d4; border-top-color: var(--ui-action); border-radius: 50%; background: #f0f5e7; animation: journey-turn 2.4s linear infinite; }
+@keyframes journey-turn { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .journey-spinner { animation: none; } }
+@media (max-width: 640px) { .journey-loading strong { font-size: 20px; } .progressive-app .journey-loading { padding: 16px; } }

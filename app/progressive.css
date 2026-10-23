@@ -1,0 +1,1454 @@
+/* Progressive presentation; backend/session behavior lives in the existing modules. */
+body {
+  background: #f8f6ef;
+  color: #203d34;
+}
+.progressive-app {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 32px 50px;
+}
+.progressive-app .workspace-topbar {
+  height: 90px;
+  border-bottom: 1px solid #e3e4d9;
+  gap: 24px;
+}
+.progressive-app .brand {
+  color: #213e35;
+  font-size: 23px;
+}
+.progressive-app .brand-symbol {
+  background: #233e35;
+  color: #f1c483;
+  border-radius: 12px;
+}
+.progressive-app .topbar-caption {
+  font-size: 14px;
+  color: #677468;
+}
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: auto;
+}
+.current-city {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.progressive-content {
+  margin: auto;
+}
+.step-indicator {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  padding: 0;
+  margin: 40px 0 28px;
+  color: #889083;
+  font-size: 12px;
+}
+.step-indicator li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.step-indicator li > span {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #d4d9cc;
+  border-radius: 50%;
+  font-size: 11px;
+}
+.step-indicator .reached {
+  color: #294b3d;
+}
+.step-indicator .reached > span {
+  background: #294b3d;
+  color: #fff;
+  border-color: #294b3d;
+}
+.onboarding-heading {
+  text-align: center;
+  margin: 35px auto 32px;
+}
+.onboarding-heading .micro-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #687b68;
+}
+.onboarding-heading h1 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -1.6px;
+  margin: 18px 0;
+}
+.onboarding-heading h1 em {
+  font-style: normal;
+  color: #416c4b;
+}
+.onboarding-heading > p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #657367;
+  max-width: 470px;
+  margin: 0 auto;
+}
+.move-onboarding,
+.taste-confirmation {
+  max-width: 750px;
+  margin: auto;
+}
+.move-form {
+  background: #fffdf8;
+  border-radius: 24px;
+  padding: 34px 38px;
+  box-shadow: 0 10px 45px #233c3410;
+  border: 1px solid #e4e5d9;
+}
+.move-fields {
+  display: grid;
+  grid-template-columns: 1fr 30px 1fr;
+  align-items: end;
+  gap: 16px;
+}
+.move-fields > label {
+  font-size: 13px;
+  font-weight: 600;
+}
+.move-fields > label > span {
+  font-weight: 400;
+  font-size: 10px;
+  color: #849180;
+  margin-left: 8px;
+}
+.field-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 10px;
+  background: #f3f4eb;
+  border: 1px solid #dce1d2;
+  border-radius: 10px;
+  padding: 0 12px;
+  min-width: 0;
+}
+.field-with-icon input,
+.field-with-icon select {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  color: #244034;
+  padding: 15px 0;
+  font: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  outline-offset: 4px;
+}
+.move-arrow {
+  padding-bottom: 14px;
+  color: #87967e;
+}
+.taste-entry {
+  margin-top: 31px;
+}
+.taste-entry h2 {
+  font-size: 20px;
+  font-family: Georgia, serif;
+  font-weight: 400;
+  margin: 0 0 8px;
+}
+.taste-entry > p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #74806f;
+}
+.taste-input-shell {
+  border: 1px solid #d8dfcf;
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 15px;
+}
+.taste-input-shell:focus-within {
+  border-color: #6e8769;
+  box-shadow: 0 0 0 3px #c5d2b72e;
+}
+.taste-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.taste-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #edf1e4;
+  border-radius: 7px;
+  padding: 4px 8px 4px 12px;
+  font-size: 12px;
+  line-height: 24px;
+}
+.taste-chip button {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #4b634b;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+.taste-add-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.taste-add-row input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  padding: 12px 2px;
+  font-size: 14px;
+  color: #294332;
+  outline: none;
+}
+.taste-add-row .icon-button {
+  border-radius: 8px;
+  background: #edf1e5;
+  width: 36px;
+  height: 36px;
+}
+.taste-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 13px;
+}
+.taste-suggestions > span {
+  flex-basis: 100%;
+  font-size: 11px;
+  color: #869180;
+  margin-bottom: 2px;
+}
+.taste-suggestions button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  background: transparent;
+  color: #56704d;
+  border: 1px solid #e0e4d6;
+  border-radius: 20px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.taste-count {
+  font-size: 11px !important;
+  color: #7e8975 !important;
+  margin: 10px 0 0;
+}
+.build-map {
+  width: 100%;
+  margin-top: 25px !important;
+  justify-content: center !important;
+  gap: 24px !important;
+  min-height: 52px;
+}
+.progressive-app .primary-button {
+  background: #2c4d3b;
+  color: #fff7e7;
+  border-radius: 10px;
+  padding: 16px 22px;
+  font-size: 13px;
+}
+.progressive-app .primary-button:hover:not(:disabled) {
+  background: #3c6147;
+}
+.progressive-app .primary-button:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+.onboarding-footnote {
+  text-align: center;
+  font-size: 11px;
+  color: #84907c;
+  margin: 16px 0 0;
+}
+.confirmation-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+.confirmation-card {
+  background: #fffdf8;
+  border: 1px solid #e0e5d6;
+  border-radius: 15px;
+  padding: 19px;
+  min-width: 0;
+}
+.confirmation-card.confirmed {
+  border-color: #99ae88;
+  background: #f3f5eb;
+}
+.confirmation-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.confirmation-card-heading > div {
+  flex: 1;
+  min-width: 0;
+}
+.confirmation-card-heading strong {
+  display: block;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+.confirmation-card-heading small {
+  display: block;
+  font-size: 11px;
+  color: #788771;
+  text-transform: capitalize;
+  margin-top: 4px;
+}
+.confirmation-mark {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  background: #e9edde;
+  border-radius: 50%;
+  color: #58774e;
+}
+.inline-match {
+  display: block;
+  margin-top: 15px;
+}
+.inline-match select {
+  width: 100%;
+  min-width: 0;
+  background: white;
+  border: 1px solid #d9dfce;
+  border-radius: 8px;
+  padding: 11px;
+  color: #47613f;
+  font-size: 12px;
+}
+.replace-taste {
+  font-size: 10px;
+  margin-top: 10px;
+}
+.initial-mode {
+  border: 0;
+  padding: 0;
+  margin: 32px 0;
+}
+.initial-mode legend {
+  font-family: Georgia, serif;
+  font-size: 23px;
+  margin-bottom: 15px;
+}
+.initial-mode-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.initial-mode-options button {
+  padding: 18px 15px;
+  border: 1px solid #d9e0cc;
+  border-radius: 12px;
+  background: #edf0e5;
+  color: #345033;
+  text-align: left;
+  cursor: pointer;
+}
+.initial-mode-options button[aria-pressed="true"] {
+  background: #304f3d;
+  color: #fff7e4;
+  border-color: #304f3d;
+}
+.initial-mode-options strong {
+  display: block;
+  font-size: 13px;
+}
+.initial-mode-options small {
+  display: block;
+  line-height: 1.5;
+  font-size: 10px;
+  opacity: 0.8;
+  margin-top: 7px;
+}
+.confirmation-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 20px 0;
+}
+.confirmation-help {
+  text-align: right;
+}
+.compact-progress {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 12px;
+  background: #ecf0e2;
+  max-width: 750px;
+  margin: 22px auto;
+  padding: 18px 24px;
+}
+.compact-progress strong {
+  font-size: 13px;
+}
+.compact-progress p {
+  font-size: 12px;
+  color: #69775e;
+  margin: 5px 0 0;
+}
+.progressive-error {
+  max-width: 750px;
+  margin: 20px auto;
+  background: #fff2e5;
+  border-color: #e3c79e;
+  color: #5a402e;
+}
+.progressive-app .living-passport {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+.passport-hero {
+  padding: 52px 0 22px;
+}
+.passport-hero .micro-label {
+  color: #7e8d70;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+.passport-hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(32px, 4.3vw, 51px);
+  font-weight: 400;
+  letter-spacing: -1.2px;
+  line-height: 1.1;
+  margin: 14px 0;
+}
+.passport-hero > p {
+  font-size: 14px;
+  color: #788572;
+  line-height: 1.8;
+}
+.passport-taste-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+.passport-taste-preview > span {
+  font-size: 11px;
+  color: #547049;
+  padding: 7px 11px;
+  background: #e9edde;
+  border-radius: 20px;
+}
+.progressive-app .familiarity-panel {
+  padding: 16px 0 24px;
+  border-bottom: 1px solid #e1e4d7;
+}
+.progressive-app .familiarity-panel h2 {
+  font-size: 21px;
+}
+.progressive-app .familiarity-panel .micro-label,
+.progressive-app .familiarity-axis {
+  display: none;
+}
+.progressive-app .familiarity-panel .panel-heading {
+  margin-bottom: 12px;
+}
+.progressive-app .familiarity-options button {
+  min-height: 74px;
+  padding: 13px 16px;
+  border-color: #dce3d1;
+}
+.progressive-app .familiarity-options .mode-orbit {
+  display: none;
+}
+.progressive-app .mode-caption {
+  font-size: 11px;
+  margin-top: 9px;
+}
+.progressive-app .passport-sections {
+  margin-top: 30px;
+}
+.progressive-app .discovery-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+.progressive-app .discovery-card {
+  padding: 24px;
+  border: 1px solid #e1e5d6;
+  background: #fffdf8;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px #223c3206;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.progressive-app .discovery-card h4 {
+  font-size: 25px;
+  line-height: 1.17;
+  letter-spacing: -0.5px;
+}
+.progressive-app .discovery-title {
+  align-items: flex-start;
+  gap: 13px;
+}
+.progressive-app .card-cultural-mark {
+  background: #e9eddf;
+  color: #6a8453;
+  border: 0;
+  border-radius: 12px;
+  width: 44px;
+  height: 50px;
+  flex-shrink: 0;
+}
+.progressive-app .card-header {
+  margin-bottom: 19px;
+}
+.progressive-app .card-type {
+  font-size: 10px;
+  color: #7b8771;
+}
+.progressive-app .card-query-inputs {
+  font-size: 11px;
+  line-height: 1.65;
+  color: #6c7d5d;
+  margin-top: 15px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.progressive-app .card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.75;
+}
+.progressive-app .card-address {
+  font-size: 11px;
+  line-height: 1.7;
+}
+.progressive-app .why-section {
+  margin-top: auto;
+  padding-top: 15px;
+}
+.progressive-app .why-section summary {
+  font-size: 11px;
+}
+.progressive-app .feedback-actions {
+  margin-top: 15px;
+}
+.progressive-app .feedback-actions button {
+  min-height: 42px;
+  font-size: 11px;
+}
+.progressive-app .result-heading h3 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 400;
+}
+.progressive-app .partial-notice {
+  background: #eef0e4;
+  border-color: #d9dfcb;
+  padding: 16px 20px;
+  border-radius: 12px;
+}
+.progressive-app .partial-notice p {
+  font-size: 11px;
+  line-height: 1.7;
+}
+.progressive-app .secondary-reveal {
+  margin-top: 25px;
+  border-top: 1px solid #dde3d0;
+  padding: 17px 0;
+}
+.secondary-reveal > summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: #405b39;
+  padding: 6px 0;
+}
+.secondary-reveal > summary::-webkit-details-marker {
+  display: none;
+}
+.secondary-reveal[open] > summary {
+  padding-bottom: 18px;
+}
+.progressive-app .cultural-bridge {
+  padding: 15px 0;
+}
+.progressive-app .bridge-route {
+  padding: 18px;
+}
+.progressive-app .pending-concept {
+  background: #f1eedf;
+  border-color: #ded6b3;
+  color: #465638;
+  margin: 22px 0;
+}
+.progressive-app .pending-concept p {
+  color: #71805f;
+}
+.progressive-app .workspace-footer {
+  padding-top: 30px;
+  margin-bottom: 40px;
+}
+.assistant-launch {
+  position: fixed;
+  right: max(28px, calc((100vw - 1136px) / 2));
+  bottom: 25px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #2c4b3c;
+  color: #fff6e1;
+  border: 1px solid #49634d;
+  border-radius: 28px;
+  padding: 16px 22px;
+  font-size: 13px;
+  box-shadow: 0 5px 22px #203b3429;
+  cursor: pointer;
+}
+.assistant-launch:hover {
+  background: #3d5f48;
+}
+.progressive-app button:focus-visible,
+.progressive-app summary:focus-visible,
+.progressive-app input:focus-visible,
+.progressive-app select:focus-visible,
+.progressive-app textarea:focus-visible {
+  outline: 3px solid #a4b87b;
+  outline-offset: 3px;
+}
+@media (max-width: 960px) {
+  .progressive-app .discovery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .topbar-caption {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .progressive-app {
+    padding: 0 18px 60px;
+  }
+  .progressive-app .workspace-topbar {
+    height: 72px;
+    gap: 12px;
+  }
+  .progressive-app .brand {
+    font-size: 19px;
+  }
+  .topbar-actions {
+    gap: 10px;
+  }
+  .current-city {
+    display: none;
+  }
+  .step-indicator {
+    gap: 15px;
+    margin: 27px 0;
+    font-size: 10px;
+  }
+  .step-indicator li {
+    gap: 5px;
+  }
+  .step-indicator li > span {
+    width: 21px;
+    height: 21px;
+  }
+  .onboarding-heading {
+    margin: 25px 0;
+  }
+  .onboarding-heading .micro-label {
+    font-size: 8px;
+    letter-spacing: 1.4px;
+  }
+  .onboarding-heading h1 {
+    font-size: 43px;
+  }
+  .onboarding-heading > p {
+    font-size: 13px;
+  }
+  .move-form {
+    padding: 24px 20px;
+    border-radius: 18px;
+  }
+  .move-fields {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .move-arrow {
+    display: none;
+  }
+  .taste-entry h2 {
+    font-size: 20px;
+  }
+  .taste-suggestions button {
+    font-size: 10px;
+    min-height: 34px;
+  }
+  .confirmation-list {
+    grid-template-columns: 1fr;
+  }
+  .initial-mode legend {
+    font-size: 22px;
+  }
+  .initial-mode-options {
+    gap: 7px;
+  }
+  .initial-mode-options button {
+    padding: 13px 10px;
+  }
+  .initial-mode-options strong {
+    font-size: 11px;
+  }
+  .initial-mode-options small {
+    font-size: 9px;
+  }
+  .confirmation-actions > .primary-button {
+    padding: 14px;
+    font-size: 12px;
+  }
+  .passport-hero {
+    padding: 34px 0 15px;
+  }
+  .passport-hero h1 {
+    font-size: 35px;
+  }
+  .progressive-app .living-passport {
+    padding: 0;
+  }
+  .progressive-app .familiarity-options {
+    gap: 6px;
+  }
+  .progressive-app .familiarity-options button {
+    padding: 12px 10px;
+    min-height: 85px;
+  }
+  .progressive-app .familiarity-options strong {
+    font-size: 11px;
+  }
+  .progressive-app .familiarity-options small {
+    font-size: 9px;
+  }
+  .progressive-app .mode-category select {
+    max-width: 100px;
+  }
+  .progressive-app .discovery-grid {
+    grid-template-columns: 1fr;
+  }
+  .progressive-app .discovery-card {
+    padding: 22px;
+  }
+  .progressive-app .result-heading h3 {
+    font-size: 26px;
+  }
+  .progressive-app .result-heading p {
+    max-width: 150px;
+    line-height: 1.7;
+  }
+  .progressive-app .result-section {
+    margin-top: 30px;
+  }
+  .assistant-launch {
+    bottom: 18px;
+    right: 18px;
+    padding: 14px 19px;
+  }
+  .progressive-app .match-dialog {
+    position: fixed;
+    inset: auto 0 0;
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    max-height: 88dvh;
+    border-radius: 22px 22px 0 0;
+    padding: 23px;
+  }
+  .compact-progress {
+    padding: 16px;
+    gap: 10px;
+  }
+  .compact-progress strong {
+    font-size: 12px;
+  }
+  .compact-progress p {
+    font-size: 11px;
+  }
+  .secondary-reveal > summary {
+    font-size: 14px;
+  }
+  .progressive-app .bridge-route {
+    padding: 12px;
+  }
+  .progressive-app .bridge-labels {
+    font-size: 8px;
+  }
+  .progressive-app .dna-cluster {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Final legibility pass: compact disclosures, clear secondary actions. */
+.progressive-app .text-button {
+  color: #49633e;
+  font-size: 11px;
+}
+.progressive-app .partial-notice {
+  padding: 12px 16px;
+}
+.progressive-app .partial-notice summary {
+  font-size: 12px;
+  color: #657653;
+  cursor: pointer;
+  min-height: 24px;
+}
+.confirmation-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+@media (max-width: 650px) {
+  .confirmation-list {
+    grid-template-columns: 1fr;
+  }
+  .progressive-app .text-button {
+    min-height: 34px;
+  }
+}
+/* Consumer Passport: a recognizable object, a short first view, explicit continuity. */
+.account-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+.topbar-actions {
+  margin-left: 8px;
+}
+.passport-cover {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 24px;
+  padding: 43px 35px;
+  margin: 28px 0;
+  background: #e9eddf;
+  border-radius: 22px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #dce3cf;
+}
+.cover-copy {
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+.cover-copy > .micro-label {
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+.cover-journey {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: #6a7d5e;
+  font-size: 11px;
+  margin-top: 23px;
+}
+.cover-copy h1 {
+  font:
+    400 clamp(32px, 4.2vw, 52px) / 1.1 Georgia,
+    serif;
+  letter-spacing: -1px;
+  margin: 17px 0;
+}
+.cover-copy h1 em {
+  font-style: normal;
+  color: #57764b;
+}
+.cover-copy > p {
+  font-size: 13px;
+  color: #6a7d61;
+  line-height: 1.7;
+}
+.cover-connection {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border: 0;
+  border-bottom: 1px solid #9caa85;
+  background: transparent;
+  padding: 8px 0;
+  margin-top: 18px;
+  font-size: 12px;
+  color: #405c34;
+  cursor: pointer;
+}
+.cover-art {
+  display: grid;
+  place-items: center;
+  position: relative;
+  min-height: 250px;
+}
+.passport-book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: #2a4b3c;
+  color: #e6c18a;
+  border-radius: 6px 18px 18px 6px;
+  box-shadow:
+    inset 6px 0 #1f3b30,
+    8px 13px 0 #d2d9c5,
+    0 20px 30px #1d3b3218;
+  transform: rotate(8deg);
+  height: 245px;
+  width: 185px;
+  border: 1px solid #49624b;
+}
+.passport-book > span {
+  font-size: 8px;
+  letter-spacing: 3px;
+}
+.passport-book > strong {
+  font:
+    22px Georgia,
+    serif;
+  letter-spacing: 2px;
+}
+.passport-book > small {
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+.cover-stamp {
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid #a86d4a;
+  border-radius: 50%;
+  width: 112px;
+  height: 112px;
+  justify-content: center;
+  color: #9d674c;
+  background: #f5efdf;
+  transform: rotate(-11deg);
+}
+.cover-stamp > strong {
+  font:
+    30px Georgia,
+    serif;
+}
+.cover-stamp > span {
+  font-size: 8px;
+  line-height: 1.6;
+}
+.discovery-view-tabs {
+  display: flex;
+  gap: 8px;
+  margin: 21px 0;
+}
+.discovery-view-tabs button {
+  border: 1px solid #dce1d1;
+  border-radius: 20px;
+  background: transparent;
+  padding: 10px 19px;
+  font-size: 12px;
+  color: #58704b;
+  cursor: pointer;
+}
+.discovery-view-tabs button[aria-pressed="true"] {
+  background: #2f4d3d;
+  color: #fff8e9;
+  border-color: #2f4d3d;
+}
+.discovery-view-tabs span {
+  margin-left: 6px;
+  font-size: 10px;
+}
+.category-more {
+  border: 1px solid #d4deca !important;
+  border-radius: 8px;
+  margin: 16px 0 20px;
+  padding: 10px 14px !important;
+  min-height: 40px;
+}
+.adaptation-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 18px;
+  background: #eef1e3;
+  border-radius: 10px;
+  margin: 17px 0;
+  color: #50673d;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.adaptation-notice > .icon-button {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.my-vibe {
+  margin: 30px 0;
+}
+.my-vibe h2 {
+  font:
+    28px Georgia,
+    serif;
+}
+.my-vibe > .helper {
+  margin: 10px 0 25px;
+}
+.saved-empty {
+  padding: 45px;
+  text-align: center;
+  background: #eef1e5;
+  border-radius: 18px;
+  color: #75865d;
+}
+.saved-empty h3 {
+  font:
+    24px Georgia,
+    serif;
+  margin: 15px 0;
+}
+.saved-empty p {
+  font-size: 13px;
+  line-height: 1.8;
+}
+.connection-explorer {
+  padding: 25px 0;
+}
+.connection-explorer h2 {
+  font:
+    32px Georgia,
+    serif;
+  margin: 12px 0;
+}
+.connection-explorer > p {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #7b896d;
+  max-width: 650px;
+}
+.connection-routes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 22px 0;
+}
+.connection-routes button {
+  border: 1px solid #d3ddc5;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: left;
+  background: #edf0e4;
+  color: #48603c;
+  cursor: pointer;
+  font-size: 13px;
+}
+.connection-routes button[aria-pressed="true"] {
+  background: #31503b;
+  color: #fff6de;
+}
+.connection-routes small {
+  display: block;
+  font-size: 9px;
+  margin-top: 5px;
+}
+.connection-path {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  background: #e9edde;
+  border-radius: 13px;
+  padding: 22px;
+  flex-wrap: wrap;
+}
+.connection-path > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 50%;
+  align-items: center;
+}
+.connection-path > div > span {
+  padding: 7px 9px;
+  font-size: 11px;
+  background: #fffdf7;
+  border-radius: 7px;
+}
+.connection-path small {
+  font-size: 10px;
+  display: block;
+  flex-basis: 100%;
+  color: #6e825c;
+}
+.connected-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 18px 0;
+}
+.connected-results li {
+  padding: 18px;
+  background: #fffdf7;
+  border: 1px solid #dfe4d4;
+  border-radius: 12px;
+  min-width: 0;
+}
+.connected-results li > strong {
+  font:
+    19px Georgia,
+    serif;
+  display: block;
+}
+.connected-results li > span {
+  font-size: 11px;
+  display: block;
+  margin: 10px 0;
+  color: #78876a;
+}
+.connected-results details {
+  font-size: 11px;
+  line-height: 1.8;
+}
+.connected-results summary {
+  cursor: pointer;
+}
+.connected-results code {
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+.connected-results small {
+  display: block;
+  font-size: 10px;
+}
+.connection-honesty {
+  font-size: 11px !important;
+}
+.account-dialog {
+  border: 1px solid #dce2d0;
+  border-radius: 20px;
+  background: #f9f7ef;
+  color: #2f4c38;
+  width: 500px;
+  max-width: calc(100vw - 28px);
+  padding: 27px;
+  max-height: 90dvh;
+  overflow: auto;
+}
+.account-dialog::backdrop {
+  background: #1d382f66;
+  backdrop-filter: blur(2px);
+}
+.account-dialog h2 {
+  font:
+    30px Georgia,
+    serif;
+  margin: 15px 0;
+}
+.account-intro,
+.account-privacy {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #77856b;
+}
+.account-dialog form > label {
+  display: block;
+  font-size: 12px;
+  margin: 16px 0;
+}
+.account-dialog input {
+  display: block;
+  width: 100%;
+  background: #fffef8;
+  border: 1px solid #d4deca;
+  border-radius: 9px;
+  padding: 13px;
+  font-size: 14px;
+  margin-top: 8px;
+  color: #2e4d37;
+}
+.account-dialog .primary-button {
+  width: 100%;
+  margin: 14px 0;
+}
+.account-tabs {
+  display: flex;
+  gap: 15px;
+  margin: 18px 0;
+}
+.account-tabs [aria-pressed="true"] {
+  text-decoration: underline;
+}
+.account-recovery-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0;color:#264437}
+.account-recovery-heading strong{font-size:14px}
+.account-message,
+.account-unavailable {
+  background: #e9eedf;
+  border-radius: 10px;
+  padding: 15px;
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 15px 0;
+}
+.account-email {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.account-privacy {
+  font-size: 10px;
+  margin-top: 20px;
+}
+.account-privacy a {
+  color: #49653c;
+  text-decoration: underline;
+}
+.saved-passport-list article {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 0;
+  border-bottom: 1px solid #dce3d2;
+}
+.saved-passport-list article > div {
+  flex: 1;
+}
+.saved-passport-list small {
+  display: block;
+  font-size: 10px;
+  color: #7b876e;
+  margin-top: 4px;
+}
+.privacy-page {
+  max-width: 740px;
+  margin: 50px auto;
+  padding: 25px;
+  color: #304a38;
+}
+.privacy-page h1 {
+  font:
+    40px Georgia,
+    serif;
+  margin: 35px 0;
+}
+.privacy-page h2 {
+  font:
+    24px Georgia,
+    serif;
+  margin: 28px 0 10px;
+}
+.privacy-page p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #62725c;
+}
+@media (max-width: 900px) {
+  .progressive-app .topbar-caption {
+    display: none;
+  }
+  .passport-cover {
+    grid-template-columns: 1fr 210px;
+    padding: 28px;
+  }
+  .cover-art {
+    transform: scale(0.85);
+  }
+  .account-control {
+    gap: 2px;
+  }
+}
+@media (max-width: 600px) {
+  .passport-cover {
+    grid-template-columns: 1fr;
+    padding: 25px 22px;
+  }
+  .cover-art {
+    display: none;
+  }
+  .cover-copy h1 {
+    font-size: 38px;
+  }
+  .cover-copy > .micro-label {
+    font-size: 8px;
+  }
+  .cover-journey {
+    font-size: 10px;
+  }
+  .account-control {
+    gap: 0;
+  }
+  .account-control .quiet-button {
+    font-size: 10px;
+    padding: 8px;
+  }
+  .topbar-actions {
+    margin-left: 0;
+    gap: 0;
+  }
+  .topbar-actions .quiet-button {
+    font-size: 10px;
+    padding: 7px;
+  }
+  .progressive-app .workspace-topbar {
+    gap: 7px;
+  }
+  .progressive-app .brand {
+    font-size: 16px;
+    gap: 6px;
+  }
+  .progressive-app .brand-symbol {
+    width: 27px;
+    height: 29px;
+  }
+  .progressive-app .brand small {
+    display: none;
+  }
+  .save-passport {
+    display: none !important;
+  }
+  .account-dialog {
+    inset: auto 0 0;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    border-radius: 22px 22px 0 0;
+    padding: 23px;
+  }
+  .connected-results {
+    grid-template-columns: 1fr;
+  }
+  .connection-path {
+    gap: 12px;
+    padding: 15px;
+  }
+  .connection-path > div {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+  .connection-path > svg {
+    width: 18px;
+  }
+  .my-vibe h2 {
+    font-size: 25px;
+  }
+  .adaptation-notice {
+    padding: 12px;
+    font-size: 11px;
+  }
+}
+/* Keep the cover distinctive while bringing real discoveries into the first view. */
+.passport-cover {
+  padding: 28px 32px;
+}
+.cover-journey {
+  margin-top: 15px;
+}
+.cover-copy h1 {
+  font-size: clamp(32px, 4vw, 46px);
+  margin: 13px 0;
+}
+.cover-art {
+  min-height: 210px;
+}
+.passport-book {
+  height: 210px;
+  width: 165px;
+  gap: 12px;
+}
+.passport-book > strong {
+  font-size: 20px;
+}
+.cover-stamp {
+  height: 96px;
+  width: 96px;
+}
+.cover-stamp > strong {
+  font-size: 26px;
+}
+.cover-stamp > span {
+  font-size: 7px;
+}
+.cover-connection {
+  margin-top: 11px;
+}
+.progressive-app .mode-caption {
+  display: none;
+}
+.progressive-app .familiarity-panel {
+  padding: 8px 0 18px;
+}
+.all-query-routes > summary {
+  font-size: 12px;
+  color: #59734a;
+  cursor: pointer;
+  margin: 16px 0;
+}
+@media (max-width: 600px) {
+  .passport-cover {
+    padding: 23px 20px;
+  }
+  .cover-copy h1 {
+    font-size: 36px;
+  }
+  .cover-copy .passport-taste-preview {
+    gap: 6px;
+  }
+  .cover-copy .passport-taste-preview > span {
+    font-size: 10px;
+  }
+  .progressive-app .familiarity-panel {
+    padding: 8px 0 14px;
+  }
+}
+.day-out-plan { padding: 1.25rem 0; }
+.day-out-plan > p { max-width: 70ch; }
+.day-out-stops { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; padding: 0; list-style: none; counter-reset: weekend; }
+.day-out-stops > li { counter-increment: weekend; min-width: 0; border: 1px solid var(--line, #dfd9cc); border-radius: 18px; padding: 1.2rem; }
+.day-out-stops h3::before { content: counter(weekend) ". "; }
+.day-out-stops label { display: block; margin-bottom: .5rem; }
+.day-out-stops select { width: 100%; min-height: 44px; padding: .65rem; border-radius: 8px; background: var(--paper, #fffaf0); color: inherit; }
+.day-out-stops p, .day-out-stops small { overflow-wrap: anywhere; }
+.day-out-stops a { display: inline-block; padding: .5rem 0; text-decoration: underline; }
+.day-out-stops details { margin-top: .7rem; }
+@media (max-width: 760px) { .day-out-stops { grid-template-columns: 1fr; } }
+.page-recovery { max-width: 640px; margin: 12vh auto; padding: 24px; }

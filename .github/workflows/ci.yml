@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - work
+      - master
+      - 'feat/**'
+      - 'release/**'
+  pull_request:
+    branches:
+      - master
+      - 'feat/discover-first-workspace-polish'
+      - 'release/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Tests, build and production smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Record validated commit
+        run: git rev-parse HEAD
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - run: npm ci
+      - run: npm run check:docs
+      - run: npm test
+      - run: npm run build
+      - run: npm run typecheck
+      - run: npm run smoke:production

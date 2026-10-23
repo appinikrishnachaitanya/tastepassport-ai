@@ -1,0 +1,101 @@
+/* Account navigation, verification and personal plan library. */
+.nav-label-short { display: none; }
+.reusable-tastes { margin-block: 20px; padding: 20px; border: 1px solid var(--ui-border); border-radius: 14px; background: var(--ui-surface); }
+.reusable-tastes p { margin-block: 8px; font-size: 14px; line-height: 1.6; }
+.reusable-tastes small { display: block; margin-top: 12px; color: var(--ui-muted); }
+.account-dialog { scrollbar-width: thin; }
+.account-library-dialog { width: min(840px, calc(100vw - 32px)); }
+.account-library-tabs { display: flex; gap: 6px; padding: 5px; margin: 18px 0 24px; border: 1px solid var(--ui-border); border-radius: 14px; background: var(--ui-tint); }
+.account-library-tabs button { flex: 1; min-height: 44px; border-radius: 10px; font-size: 14px; }
+.account-library-tabs button[aria-pressed="true"] { background: var(--ui-surface); box-shadow: 0 2px 8px #193e3210; }
+.verification-screen { display: grid; gap: 18px; padding: 12px 0; }
+.verification-screen h3 { font: 26px/1.25 Georgia, serif; }
+.verification-screen p { line-height: 1.75; overflow-wrap: anywhere; }
+.account-dialog .helper { font-size: 14px; line-height: 1.7; color: var(--ui-muted); }
+.account-dialog .text-button { font-size: 14px; min-height: 44px; color: var(--ui-action); }
+.verification-mark { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 20px; background: var(--ui-tint); color: var(--ui-action); }
+.account-library-dialog .saved-passport-list article { padding: 18px; border: 1px solid var(--ui-border); border-radius: 16px; background: var(--ui-surface); margin-top: 12px; }
+.account-library-dialog .saved-passport-list strong { font: 24px/1.25 Georgia, serif; }
+.account-library-dialog .account-email { color: var(--ui-muted); font-size: 13px; }
+.library-empty { margin: 20px 0; padding: 28px; border: 1px dashed #b5c5aa; border-radius: 18px; background: #f4f7ee; }
+.library-empty h3 { font: 25px/1.3 Georgia, serif; margin-bottom: 12px; }
+.library-empty p { font-size: 15px; line-height: 1.7; color: var(--ui-muted); }
+.saved-plan { display: flex; align-items: flex-start; gap: 20px; margin: 20px 0; padding: 22px; border: 1px solid var(--ui-border); border-radius: 20px; background: var(--ui-surface); }
+.plan-date { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; min-width: 64px; border: 1px solid var(--ui-border); border-radius: 14px; overflow: hidden; background: #eef3e5; }
+.plan-date > span { width: 100%; padding: 5px 12px; background: var(--ui-action); color: #fff; font-size: 12px; text-align: center; }
+.plan-date > strong { padding: 8px 10px; font: 28px Georgia, serif; }
+.plan-details { min-width: 0; flex: 1; }
+.plan-details h3 { font: 27px/1.2 Georgia, serif; margin-bottom: 8px; }
+.plan-details > p { font-size: 13px; color: var(--ui-muted); }
+.plan-details ol { padding-left: 20px; margin: 18px 0; }
+.plan-details li { padding: 5px 0 9px; }
+.plan-details li strong, .plan-details li span { display: block; overflow-wrap: anywhere; }
+.plan-details li span { font-size: 13px; line-height: 1.6; color: var(--ui-muted); }
+.plan-actions, .plan-save-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.plan-actions button { min-height: 44px; padding-inline: 12px; font-size: 14px; }
+.plan-schedule { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin: 24px 0; padding: 20px; background: var(--ui-tint); border-radius: 16px; }
+.plan-schedule label { display: grid; gap: 8px; font-size: 14px; font-weight: 600; }
+.plan-schedule input { display: block; min-height: 48px; min-width: 190px; max-width: 100%; padding: 10px 12px; border: 1px solid var(--ui-border); border-radius: 12px; background: #fff; color: var(--ui-ink); font-size: 16px; }
+.plan-schedule .helper { flex-basis: 100%; font-weight: 400; }
+.stop-time-label { display: grid !important; gap: 6px; margin-bottom: 12px !important; color: var(--ui-ink); font-size: 14px; font-weight: 650; }
+.stop-time-label input { width: 100%; min-height: 44px; padding: 8px 12px; border: 1px solid var(--ui-border); border-radius: 10px; background: var(--ui-surface); color: var(--ui-ink); font: inherit; }
+.connection-interest-picker { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 12px; }
+.connection-interest-picker button { min-height: 44px; padding: 10px 16px; border: 1px solid var(--ui-border); border-radius: 24px; background: var(--ui-surface); color: var(--ui-ink); font-size: 14px; }
+.connection-interest-picker button[aria-pressed="true"] { border-color: var(--ui-action); background: var(--ui-action); color: #fff; }
+.connection-result-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.connection-result-tags span { padding: 5px 8px; border-radius: 8px; background: var(--ui-tint); color: var(--ui-muted); font-size: 12px; }
+.connection-explore { margin-top: 20px; border: 1px solid var(--ui-border); border-radius: 12px; background: var(--ui-surface); }
+.workspace-topbar:has(.signout-button) .topbar-caption, .workspace-topbar:has(.signout-button) .current-city { display: none; }
+.progressive-app .workspace-topbar:has(.signout-button) { grid-template-columns: auto minmax(0, 1fr); }
+@media (max-width: 1000px) {
+  .account-control:has(.signout-button) .nav-label-long { display: none; }
+  .account-control:has(.signout-button) .nav-label-short { display: inline; }
+}
+@media (max-width: 760px) {
+  .progressive-app:has(.signout-button) { --header-height: 116px; }
+  .progressive-app .workspace-topbar:has(.signout-button) { height: var(--header-height); grid-template-columns: 1fr; padding-block: 8px; gap: 4px; }
+  .workspace-topbar:has(.signout-button) .header-controls { width: 100%; justify-content: space-between; gap: 4px; }
+  .header-controls .account-control:has(.signout-button) { gap: 4px; }
+  .header-controls .account-control:has(.signout-button) button { font-size: 13px; padding-inline: 8px; }
+  .saved-plan { gap: 12px; padding: 16px; }
+  .plan-date { min-width: 50px; }
+  .plan-details h3 { font-size: 23px; }
+  .plan-save-actions > button { width: 100%; justify-content: center; }
+  .plan-schedule { padding: 16px; }
+}
+@media (max-width: 380px) {
+  .header-controls .account-control:has(.signout-button) button { padding-inline: 5px; font-size: 12px; }
+}
+/* Account mode is a single switch above the fields, separate from submission. */
+.account-dialog .account-tabs { display: flex; gap: 4px; padding: 4px; margin: 0 0 22px; border: 1px solid var(--ui-border); border-radius: 12px; background: var(--ui-tint); }
+.account-dialog .account-tabs button { flex: 1; min-height: 44px; border-radius: 8px; text-decoration: none; }
+.account-dialog .account-tabs button[aria-pressed="true"] { background: var(--ui-action); color: #fff; }
+.profile-heading { display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.profile-heading h2 { margin-top:6px; font-size:clamp(20px,3vw,27px); }
+.profile-heading > span { white-space:nowrap; color:var(--ui-muted); font-size:13px; }
+.profile-fields { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:16px; margin:16px 0; }
+.profile-fields label { display:grid; gap:8px; font-size:14px; font-weight:600; }
+.profile-fields input,.profile-fields select { width:100%; min-width:0; min-height:46px; padding:10px 12px; border:1px solid var(--ui-border); border-radius:10px; background-color:var(--ui-surface); color:var(--ui-ink); font:inherit; }
+.profile-status { padding:12px 16px; border-left:3px solid var(--ui-action); background:var(--ui-tint); border-radius:8px; }
+.profile-interest-preview { overflow-wrap:anywhere; }
+.reusable-tastes .plan-actions a { display:inline-flex; align-items:center; min-height:44px; padding:10px 16px; text-decoration:none; }
+
+.profile-fields select { padding-right:38px; }
+.profile-fields input,.profile-fields select { font-size:16px; }
+
+.taste-profile-dialog { width: min(560px, calc(100vw - 32px)); color: var(--ui-ink); background: var(--ui-surface); }
+.taste-profile-dialog > p { font-size: 15px; line-height: 1.75; margin-block: 16px; color: #475a49; }
+.profile-save-name { display: grid; gap: 10px; margin-block: 24px; font-size: 15px; font-weight: 650; }
+.profile-save-name input { min-height: 50px; width: 100%; padding: 12px 14px; border: 1px solid var(--ui-border); border-radius: 12px; color: var(--ui-ink); background: #fffdf5; font-size: 16px; }
+.profile-save-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.profile-save-actions button { min-height: 48px; }
+@media (max-width: 480px) { .profile-save-actions { flex-direction: column; } .profile-save-actions button { width: 100%; } }
+
+/* Keep scheduling compact; detailed guidance is available on demand. */
+.progressive-app .plan-schedule { align-items: flex-end; gap: 16px; margin: 20px 0; border: 1px solid #d9d4b2; background: #f4edce; }
+.progressive-app .plan-schedule .quiet-button { min-height: 48px; padding: 12px 18px; border: 1px solid #c9cba9; border-radius: 12px; background: #fffdf5; }
+.plan-zone { margin-left: auto; align-self: center; max-width: 28ch; color: #516047; font-size: 12px; }
+.outing-checklist { padding: 15px 18px; margin: 18px 0; border: 1px solid #d8ddca; border-radius: 14px; background: #f0f3e7; }
+.outing-checklist summary { min-height: 24px; cursor: pointer; font-weight: 650; }
+.outing-checklist p { color: #4a5c46; font-size: 13px; line-height: 1.65; }
+@media (max-width: 500px) { .plan-zone { flex-basis: 100%; margin-left: 0; } }

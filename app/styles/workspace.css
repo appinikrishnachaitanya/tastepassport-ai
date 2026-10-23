@@ -1,0 +1,442 @@
+/* Focused consumer workspace, floating concierge and editorial About page. */
+.shortlist-choice { min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.shortlist-choice > .discovery-card { flex: 1; }
+.shortlist-label { min-height: 88px; padding: 12px 16px; border-radius: 12px; background: #e8f4ef; color: #1d513b; font-size: 14px; font-weight: 700; }
+.shortlist-label small { display: block; font-size: 12px; font-weight: 500; line-height: 1.5; margin-top: 4px; color: var(--ui-muted); }
+.outing-activities { display: flex; flex-wrap: wrap; gap: 10px; border: 1px solid var(--ui-border); border-radius: 14px; padding: 16px; margin: 20px 0; }
+.outing-activities legend { font-weight: 650; padding-inline: 6px; }
+.outing-activities label { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--ui-border); border-radius: 10px; background: var(--ui-surface); }
+.outing-activities input { width: 18px; height: 18px; accent-color: var(--ui-action); }
+.outing-order { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+[hidden] {
+  display: none !important;
+}
+.progressive-app {
+  padding-bottom: 120px;
+}
+.account-dialog h2,
+.account-dialog h3,
+.account-library-dialog .saved-passport-list strong,
+.saved-plan h3,
+.plan-date strong,
+.journey-loading strong {
+  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 650;
+}
+.progressive-app h1,
+.progressive-app h2,
+.progressive-app h3,
+.progressive-app h4,
+.about-page h1,
+.about-page h2 {
+  font-family: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.035em;
+  font-weight: 650;
+}
+.progressive-app p {
+  text-align: left;
+}
+.passport-cover {
+  background: linear-gradient(115deg, #214b36, #316447);
+  border-color: #476744;
+  color: #fff9df;
+  padding: 32px;
+}
+.passport-cover h1 {
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.12;
+  color: #fff;
+}
+.passport-cover h1 em {
+  color: #f5d96c;
+  font-style: normal;
+}
+.passport-cover .micro-label,
+.passport-cover .cover-journey,
+.passport-cover .cover-copy > p {
+  color: #e9edcf;
+}
+.passport-cover .passport-taste-preview span {
+  color: #fff;
+  border-color: #ffffff40;
+  background: #ffffff12;
+}
+.passport-cover .cover-connection {
+  color: #fff;
+  border-color: #ffffff70;
+}
+.passport-cover .cover-art {
+  transform: scale(0.86);
+}
+.progressive-app .workspace-topbar {
+  background: #fffdf3ed;
+  border-color: var(--ui-border);
+}
+.progressive-app .passport-toolbar {
+  display: block;
+  min-width: 0;
+  margin-block: 24px;
+}
+.progressive-app .passport-toolbar {
+  position: static;
+  padding-block: 8px;
+  background: #faf5dff5;
+}
+.progressive-app .discovery-card .card-address,
+.progressive-app .discovery-card .card-description {
+  font-size: 14px;
+  line-height: 1.7;
+}
+.progressive-app .discovery-view-tabs {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  gap: 6px;
+  padding: 6px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  background: #f0e8c7;
+  border: 1px solid #d9d4b3;
+  border-radius: 16px;
+  scrollbar-width: thin;
+}
+.progressive-app .discovery-view-tabs button {
+  flex: 1 0 auto;
+  min-height: 48px;
+  padding: 10px 18px;
+  white-space: nowrap;
+  border-radius: 11px;
+  font-size: 14px;
+  font-weight: 650;
+}
+.progressive-app .discovery-view-tabs button[aria-pressed="true"] {
+  background: var(--ui-action);
+  color: #fff;
+  box-shadow: 0 3px 8px #073e4720;
+}
+.progressive-app .assistant-launch {
+  position: fixed;
+  z-index: 35;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 16px 22px;
+  width: auto;
+  border: 1px solid #0a8277;
+  border-radius: 999px;
+  background: #1d513b;
+  color: #fff;
+  box-shadow: 0 10px 30px #214b3630;
+  font:
+    650 15px/1.4 "Manrope",
+    sans-serif;
+}
+.progressive-app .assistant-launch:hover {
+  background: #143e2c;
+  box-shadow: 0 12px 34px #214b3640;
+}
+
+/* The destination picker already has a pin icon; keep one dropdown affordance. */
+.progressive-app .destination-control select {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: none;
+  padding-right: 0;
+}
+.workspace-panel {
+  margin-top: 24px;
+}
+.workspace-panel,
+.workspace-view-anchor {
+  scroll-margin-top: calc(var(--header-height) - 12px);
+}
+.progressive-app .workspace-panel > .secondary-reveal {
+  background: #fff;
+}
+.workspace-panel > details {
+  margin: 0;
+  padding: 28px;
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 24px;
+  box-shadow: var(--ui-shadow);
+}
+.workspace-panel > details > summary {
+  display: none;
+}
+.workspace-panel .intelligence-content {
+  padding: 0;
+}
+.progressive-app .intelligence-content h2,
+.progressive-app .day-out-plan h2,
+.progressive-app .connection-explorer h2 {
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.progressive-app .intelligence-content > p,
+.progressive-app .day-out-plan > p {
+  max-width: 70ch;
+  margin-block: 12px 20px;
+}
+.progressive-app .secondary-reveal .helper {
+  color: var(--ui-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.progressive-app select {
+  font-size: 16px;
+}
+.why-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.progressive-app .why-section .why-evidence p {
+  font-size: 14px;
+}
+.workspace-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 48px;
+  border-top: 1px solid var(--ui-border);
+  padding-top: 20px;
+  color: var(--ui-muted);
+  font-size: 14px;
+}
+.workspace-footer nav {
+  display: flex;
+  gap: 12px;
+}
+.workspace-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.toast-notice {
+  bottom: calc(94px + env(safe-area-inset-bottom));
+}
+.about-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 32px 56px;
+}
+.about-page > nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 64px;
+}
+.about-page nav a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 650;
+}
+.about-brand {
+  font-size: 24px;
+  gap: 6px;
+}
+.about-brand small {
+  font-size: 12px;
+}
+.about-hero {
+  margin: 36px 0 56px;
+  padding: clamp(28px, 6vw, 72px);
+  border-radius: 32px;
+  background: linear-gradient(120deg, #214b36, #316447);
+  color: #fff;
+}
+.about-hero h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.1;
+  margin-block: 24px;
+}
+.about-hero .micro-label {
+  color: #bceee6;
+}
+.about-hero p {
+  max-width: 62ch;
+  font-size: 18px;
+  line-height: 1.8;
+  color: #d8eeee;
+}
+.about-page > section {
+  margin-block: 48px;
+}
+.about-page h2 {
+  font-size: clamp(24px, 3vw, 34px);
+  line-height: 1.3;
+  margin-bottom: 18px;
+}
+.about-page section p {
+  max-width: 75ch;
+  line-height: 1.85;
+  margin-block: 12px;
+}
+.about-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.about-steps article {
+  padding: 28px;
+  border: 1px solid var(--ui-border);
+  border-radius: 24px;
+  background: #fff;
+}
+.about-steps article > span {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--ui-action);
+  font-weight: 750;
+}
+.about-steps h2 {
+  font-size: 23px;
+}
+.about-cta {
+  padding: 36px;
+  border-radius: 24px;
+  background: #d8eee9;
+}
+.about-cta .primary-button {
+  display: inline-flex;
+  margin-top: 20px;
+  padding: 14px 22px;
+  background: var(--ui-action);
+  color: #fff;
+  border-radius: 14px;
+}
+@media (max-width: 640px) {
+  .passport-cover {
+    padding: 24px;
+  }
+  .workspace-panel > details {
+    padding: 20px;
+    border-radius: 20px;
+  }
+  .progressive-app .discovery-view-tabs button {
+    min-height: 44px;
+    padding-inline: 14px;
+    font-size: 13px;
+  }
+  .progressive-app .assistant-launch {
+    right: 16px;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    min-height: 52px;
+    padding: 14px 18px;
+    font-size: 14px;
+  }
+  .about-page {
+    padding-inline: 20px;
+  }
+  .about-steps {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .about-hero {
+    margin-top: 24px;
+    border-radius: 24px;
+  }
+  .about-cta {
+    padding: 24px;
+  }
+}
+
+/* Result navigation remains legible on both pale surfaces and selected tabs. */
+.workspace-tabs button,
+.concierge-tabs button {
+  color: var(--ui-ink);
+}
+.workspace-tabs button[aria-selected="true"],
+.concierge-tabs button[aria-selected="true"] {
+  background: var(--ui-action);
+  color: #ffffff;
+}
+.workspace-tabs button:focus-visible,
+.concierge-tabs button:focus-visible {
+  outline: 3px solid #486d3e;
+  outline-offset: 3px;
+}
+
+.progressive-app .discovery-view-tabs button {
+  color: var(--ui-ink);
+}
+.progressive-app .discovery-view-tabs button[aria-pressed="true"] {
+  color: #fff;
+  background: var(--ui-action);
+}
+
+@media (max-width: 640px) { .shortlist-label { min-height: 0; } }
+
+/* Discover first: conversation and direct controls share a clear starting point. */
+.discovery-concierge { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:28px; padding:clamp(22px,3vw,36px); margin:24px 0; border:1px solid #b8c7ae; border-radius:24px; background:linear-gradient(120deg,#fffdf2,#edf1e1); box-shadow:0 8px 28px #1d44300a; }
+.discovery-concierge-copy, .discovery-next-steps { min-width:0; }
+.discovery-concierge h2 { margin:12px 0; font-size:clamp(23px,2.6vw,32px); line-height:1.25; }
+.discovery-concierge p { font-size:15px; line-height:1.7; color:#48614d; max-width:52ch; margin-bottom:18px; }
+.discovery-concierge .primary-button { display:inline-flex; align-items:center; gap:14px; min-height:48px; }
+.discovery-prompts { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+.discovery-prompts button { display:flex; align-items:center; gap:10px; border:1px solid #c5d0b9; border-radius:12px; background:#fffef6; color:#294b34; text-align:left; font:inherit; font-size:13px; line-height:1.6; padding:10px 12px; min-height:44px; }
+.discovery-prompts svg, .discovery-next-steps svg { flex-shrink:0; }
+.discovery-next-steps { display:flex; flex-direction:column; gap:10px; }
+.discovery-next-steps > .micro-label { margin-bottom:2px; }
+.discovery-next-steps button { display:flex; align-items:center; gap:14px; width:100%; text-align:left; padding:16px; min-height:76px; border:1px solid #ccd5c1; border-radius:14px; background:#fffef6; color:#294b34; }
+.discovery-next-steps button > span { flex:1; min-width:0; }
+.discovery-next-steps strong { display:block; font-size:14px; line-height:1.5; }
+.discovery-next-steps small { display:block; margin-top:4px; font-size:12px; line-height:1.6; color:#526850; }
+.discovery-prompts button:hover:not(:disabled), .discovery-next-steps button:hover:not(:disabled) { border-color:#6e8a60; background:#eaf0de; }
+.discovery-concierge button:focus-visible { outline:3px solid #8b6a26; outline-offset:3px; }
+@media(max-width:760px) { .discovery-concierge { grid-template-columns:minmax(0,1fr); gap:24px; } }
+
+/* Visible desktop navigation; a labelled disclosure preserves space on mobile. */
+.passport-workspace { display:grid; grid-template-columns:190px minmax(0,1fr); align-items:start; gap:24px; margin-top:28px; }
+.passport-workspace-content { min-width:0; }
+.passport-workspace-content:focus { outline:none; }
+.passport-sidebar { position:static; min-width:0; padding:20px 12px; border:1px solid #c6d0b8; border-radius:20px; background:#f5f3e3; }
+.passport-sidebar-title { display:block; margin:0 12px 16px; color:#52634e; }
+.passport-navigation { display:flex; flex-direction:column; gap:6px; }
+.passport-navigation button { display:flex; align-items:center; gap:12px; min-height:48px; width:100%; padding:12px; border:1px solid transparent; border-radius:12px; background:transparent; color:#304c36; font:inherit; font-size:14px; font-weight:600; text-align:left; }
+.passport-navigation button > span:first-of-type { flex:1; min-width:0; }
+.passport-navigation button:hover { background:#e5ebd8; border-color:#bbc9ab; }
+.passport-navigation button[aria-current="page"] { background:#254e39; color:#fff9df; border-color:#254e39; }
+.passport-saved-count { display:inline-grid; place-items:center; min-width:24px; padding:2px 6px; border-radius:8px; background:#dfe8d2; color:#294631; font-size:12px; }
+.passport-navigation button[aria-current="page"] .passport-saved-count { background:#fff9df; }
+.passport-mobile-heading { display:none; }
+@media(max-width:1099px) {
+  .passport-workspace { display:block; margin-top:20px; }
+  .passport-sidebar { padding:12px; margin-bottom:24px; }
+  .passport-sidebar-title { display:none; }
+  .passport-mobile-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .passport-menu-toggle { display:inline-flex; align-items:center; gap:10px; min-height:48px; border:0; border-radius:10px; padding:10px 12px; background:#254e39; color:#fff9df; font:inherit; font-weight:600; font-size:14px; }
+  .passport-current-view { font-size:13px; color:#425b43; padding-right:8px; }
+  .passport-navigation { display:none; margin-top:12px; border-top:1px solid #c6d0b8; padding-top:12px; }
+  .passport-sidebar[data-menu-open="true"] .passport-navigation { display:flex; }
+}
+
+.missing-discoveries { margin: 20px 0; padding: 20px; border: 1px solid var(--ui-border); border-radius: 16px; background: var(--ui-surface); color: var(--ui-ink); }
+.missing-discoveries h3 { margin: 0 0 8px; font-size: 18px; }
+.missing-discoveries p { margin: 0; max-width: 65ch; color: var(--ui-muted); line-height: 1.6; }
+.missing-discoveries > div { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.missing-discoveries button { min-height: 44px; white-space: normal; }
+
+.passport-recovery { display: flex; align-items: center; gap: 16px; padding: 20px 24px; margin: 18px 0; border: 1px solid #c8d3b5; border-radius: 18px; background: #f0f3e4; color: #284b36; }
+.passport-recovery > svg { flex-shrink: 0; }
+.passport-recovery > div { flex: 1; min-width: 0; }
+.passport-recovery strong { font-size: 16px; }
+.passport-recovery p { margin: 5px 0 0; font-size: 13px; line-height: 1.55; color: #4a5e47; }
+.passport-recovery button { flex-shrink: 0; min-height: 44px; }
+.progressive-app .discovery-concierge { border: 1px solid #d0d7bf; border-radius: 24px; background: radial-gradient(ellipse at 0 0, #efdda477, transparent 55%), #faf9f0; box-shadow: 0 12px 32px #173c300b; }
+.progressive-app .discovery-next-steps > button { border: 1px solid #d3dac3; border-radius: 16px; background: #fffef8; box-shadow: 0 5px 15px #173c3008; }
+.progressive-app .discovery-next-steps > button:hover { background: #edf2e3; border-color: #8a9d79; }
+@media (max-width: 700px) { .passport-recovery { flex-wrap: wrap; padding: 18px; } .passport-recovery button { width: 100%; } }

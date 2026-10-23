@@ -1,0 +1,125 @@
+/* Dialogs: shared TastePassport presentation. */
+
+.progressive-app :is(button, summary, a), .account-dialog button, .match-dialog button {
+  transition: background-color 160ms var(--ui-ease), border-color 160ms var(--ui-ease), box-shadow 160ms var(--ui-ease), transform 160ms var(--ui-ease);
+}
+
+.progressive-app .primary-button, .account-dialog .primary-button, .match-dialog .primary-button {
+  background: var(--ui-action);
+  color: #fffef5;
+  min-height: 52px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -.15px;
+  box-shadow: 0 5px 12px #214f3e18;
+}
+
+.progressive-app .primary-button:hover:not(:disabled), .account-dialog .primary-button:hover:not(:disabled), .match-dialog .primary-button:hover:not(:disabled) {
+  background: var(--ui-action-hover);
+  box-shadow: 0 7px 18px #214f3e24;
+}
+
+.guided-panel label, .guided-panel legend {
+  font-size: 14px;
+}
+
+.guided-panel button, .feedback-reasons label {
+  min-height: 44px;
+  font-size: 14px;
+}
+
+.account-dialog, .match-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(520px, calc(100vw - 32px));
+  height: fit-content;
+  max-height: calc(100dvh - 48px);
+  border: 1px solid var(--ui-border);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 24px 80px #183e3330;
+  overflow: auto;
+  overscroll-behavior: contain;
+  white-space: normal;
+}
+
+.account-dialog .dialog-header, .match-dialog .dialog-header {
+  gap: 16px;
+  align-items: center;
+}
+
+.account-dialog .icon-button, .match-dialog .icon-button {
+  min-width: 44px;
+  min-height: 44px;
+  flex-shrink: 0;
+  border-radius: 12px;
+}
+
+.account-dialog h2, .match-dialog h2 {
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.account-dialog .account-intro {
+  line-height: 1.7;
+}
+
+.account-dialog form > label {
+  font-size: 14px;
+}
+
+.account-privacy {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ui-muted);
+}
+
+.account-dialog .account-password-guidance {
+  padding: 10px 12px;
+  border: 1px solid var(--ui-border);
+  border-radius: 10px;
+}
+
+.account-dialog .account-password-checklist {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.account-dialog .account-password-checklist li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  overflow-wrap: anywhere;
+}
+
+.account-dialog .account-password-checklist li span {
+  flex: 0 0 14px;
+  font-weight: 700;
+}
+
+.account-dialog .account-password-checklist .met {
+  color: #2c6a45;
+}
+
+.account-dialog .account-password-checklist .missing {
+  color: var(--ui-muted);
+}
+
+@media (max-width: 640px) {
+  .account-dialog, .match-dialog {
+    padding: 20px;
+    border-radius: 20px;
+    max-height: calc(100dvh - 32px);
+  }
+}

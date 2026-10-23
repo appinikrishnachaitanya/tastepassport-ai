@@ -1,0 +1,81 @@
+/* Motion owns timing only. Content remains visible without animations or JS. */
+:root {
+  --motion-enter: 420ms;
+  --motion-quick: 180ms;
+  --motion-ease-out: cubic-bezier(.2, .8, .2, 1);
+}
+
+@keyframes passport-arrive {
+  from { opacity: 0; translate: 0 12px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes passport-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes concierge-arrive {
+  from { opacity: 0; translate: -12px 0; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes passport-stamp {
+  from { opacity: 0; scale: .94; }
+  to { opacity: 1; scale: 1; }
+}
+@keyframes favorite-confirm {
+  0%, 100% { scale: 1; }
+  45% { scale: 1.16; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .move-onboarding .onboarding-heading,
+  .passport-cover .cover-copy,
+  .discovery-concierge,
+  .my-vibe .vibe-intro,
+  .taste-analysis .analysis-intro,
+  .day-out-reveal[open] .outing-intro,
+  .intelligence-intro {
+    animation: passport-arrive var(--motion-enter) var(--motion-ease-out) both;
+  }
+  .move-onboarding .move-form { animation: passport-arrive 480ms var(--motion-ease-out) 70ms backwards; }
+  .passport-cover .cover-stamp { animation: passport-stamp 540ms var(--motion-ease-out) 120ms backwards; }
+
+  /* Only the opening choices stagger; long inventories never wait on animation. */
+  .discovery-grid > :is(.shortlist-choice, .discovery-card):nth-child(-n+6),
+  .day-out-stops > li:nth-child(-n+5),
+  .area-choices > article:nth-child(-n+3) {
+    animation: passport-arrive var(--motion-enter) var(--motion-ease-out) backwards;
+  }
+  :is(.discovery-grid, .day-out-stops, .area-choices) > :nth-child(2) { animation-delay: 45ms; }
+  :is(.discovery-grid, .day-out-stops, .area-choices) > :nth-child(3) { animation-delay: 90ms; }
+  :is(.discovery-grid, .day-out-stops) > :nth-child(4) { animation-delay: 135ms; }
+  :is(.discovery-grid, .day-out-stops) > :nth-child(5) { animation-delay: 180ms; }
+  .discovery-grid > :nth-child(6) { animation-delay: 225ms; }
+
+  .concierge-drawer[open] { animation: concierge-arrive 260ms var(--motion-ease-out); }
+  :is(.account-dialog, .account-library-dialog, .match-dialog, .feedback-dialog, .taste-profile-dialog)[open] {
+    animation: passport-stamp 220ms var(--motion-ease-out);
+  }
+  :is(.concierge-drawer, .account-dialog, .account-library-dialog, .match-dialog, .feedback-dialog, .taste-profile-dialog)[open]::backdrop {
+    animation: passport-fade 180ms ease-out;
+  }
+  .conversation > .message { animation: passport-arrive 220ms var(--motion-ease-out); }
+  :is(.toast-notice, .adaptation-notice, .passport-recovery, .conversation-recovery) {
+    /* Individual translate preserves the toast's existing centering transform. */
+    animation: passport-arrive 240ms var(--motion-ease-out);
+  }
+  .feedback-actions button.liked svg { animation: favorite-confirm 300ms ease-out; }
+  :is(.primary-button, .cover-connection, .discovery-next-steps button) > svg:last-child {
+    transition: translate var(--motion-quick) var(--motion-ease-out);
+  }
+  .brand-symbol { transition: rotate 220ms var(--motion-ease-out); }
+
+  @media (hover: hover) and (pointer: fine) {
+    :is(.primary-button, .cover-connection, .discovery-next-steps button):hover:not(:disabled) > svg:last-child { translate: 3px 0; }
+    .brand:hover .brand-symbol { rotate: -7deg; }
+  }
+}
+
+/* Existing global reduced-motion rules also disable legacy loading animations. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

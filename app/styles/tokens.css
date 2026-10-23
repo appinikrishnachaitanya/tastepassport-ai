@@ -1,0 +1,14 @@
+/* Tokens: shared TastePassport presentation. */
+
+:root {
+  --ui-ink: #193e31;
+  --ui-muted: #59644a;
+  --ui-action: #1d513b;
+  --ui-action-hover: #143e2c;
+  --ui-surface: #fffdf5;
+  --ui-tint: #f3edcf;
+  --ui-border: #d9d8bb;
+  --ui-radius: 18px;
+  --ui-shadow: 0 12px 36px #193e3210;
+  --ui-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}

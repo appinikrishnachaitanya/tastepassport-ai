@@ -1,0 +1,44 @@
+{
+  "name": "tastepassport-ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "spike": "node --use-env-proxy --env-file-if-exists=.env src/spike/tastePassportSpike.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "dev": "node --use-env-proxy node_modules/next/dist/bin/next dev --webpack --hostname 0.0.0.0",
+    "build": "next build --webpack",
+    "start": "node --use-env-proxy node_modules/next/dist/bin/next start --hostname 0.0.0.0",
+    "verify:gemini": "node --use-env-proxy --env-file-if-exists=.env --env-file-if-exists=.env.local --conditions=react-server --import tsx scripts/verify-gemini-mcp.ts",
+    "test:browser": "node scripts/verify-progressive-ui.mjs",
+    "verify:qloo": "node --use-env-proxy --env-file-if-exists=.env --env-file-if-exists=.env.local --conditions=react-server --import tsx scripts/verify-qloo-intelligence.ts",
+    "verify:accuracy": "node --use-env-proxy --env-file-if-exists=.env --env-file-if-exists=.env.local --conditions=react-server --import tsx scripts/verify-accuracy.ts",
+    "smoke:production": "node scripts/smoke-production.mjs",
+    "check:docs": "node scripts/check-doc-links.mjs",
+    "verify:relevance": "node --use-env-proxy --env-file-if-exists=.env --env-file-if-exists=.env.local --conditions=react-server --import tsx scripts/verify-relevance.ts"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.0"
+  },
+  "dependencies": {
+    "@google/genai": "^2.29.1",
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@qloo/qloo-harness": "0.1.26",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.118.0",
+    "next": "^16.4.2",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "server-only": "^0.0.1"
+  }
+}

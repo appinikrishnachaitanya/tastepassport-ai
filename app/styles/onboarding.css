@@ -1,0 +1,314 @@
+/* Onboarding: shared TastePassport presentation. */
+.activity-picker { border: 0; padding: 0; margin: 24px 0; min-width: 0; }
+.activity-picker legend { font-size: 16px; font-weight: 700; }
+.activity-picker .helper { margin: 8px 0 14px; }
+.activity-options { display: flex; gap: 8px; flex-wrap: wrap; }
+.activity-options button { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; min-height: 44px; border: 1px solid var(--ui-border); border-radius: 12px; background: var(--ui-surface); color: var(--ui-ink); font-size: 14px; }
+.activity-options button[aria-pressed="true"] { background: var(--ui-action); color: #fffdf3; border-color: var(--ui-action); }
+.more-activities { margin-top: 12px; }
+.more-activities summary { min-height: 44px; cursor: pointer; color: var(--ui-action); font-size: 14px; font-weight: 650; }
+
+.step-indicator {
+  gap: 42px;
+  margin: 36px auto;
+  font-size: 13px;
+  color: var(--ui-muted);
+}
+
+.step-indicator li {
+  gap: 10px;
+}
+
+.step-indicator li > span {
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
+}
+
+.move-onboarding, .taste-confirmation {
+  max-width: 800px;
+}
+
+.onboarding-heading {
+  margin: 42px auto 36px;
+}
+
+.onboarding-heading h1 {
+  font-size: clamp(44px, 5.8vw, 72px);
+  line-height: 1.06;
+  letter-spacing: -2.5px;
+}
+
+.onboarding-heading > p {
+  font-size: 17px;
+  max-width: 510px;
+  color: var(--ui-muted);
+  margin-top: 18px;
+}
+
+.move-form {
+  padding: 40px;
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-radius: 28px;
+  box-shadow: 0 18px 48px #193e310d, 0 2px 6px #193e3105;
+  background: linear-gradient(155deg, #ffffff 75%, #f4efd5);
+}
+
+.move-fields {
+  gap: 18px;
+}
+
+.move-fields > label {
+  font-size: 14px;
+}
+
+.move-fields > label > span {
+  font-size: 12px;
+  color: var(--ui-muted);
+}
+
+.taste-entry {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid #e5e9df;
+}
+
+.move-form .taste-chip {
+  border-radius: 999px;
+  background: #eff7f5;
+  border-color: #c5dfd8;
+  color: #164c47;
+}
+
+.move-form .primary-button {
+  box-shadow: 0 6px 16px #1d513b1c;
+}
+
+.taste-entry h2 {
+  font-size: 27px;
+  letter-spacing: -.5px;
+}
+
+.taste-entry > p {
+  font-size: 14px;
+  color: var(--ui-muted);
+}
+
+.taste-add-row .icon-button {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+
+.taste-chip {
+  font-size: 14px;
+  border-radius: 12px;
+  padding: 2px 3px 2px 12px;
+}
+
+.taste-chip button {
+  width: 44px;
+  height: 44px;
+}
+
+.taste-suggestions {
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.taste-suggestions > span {
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+.taste-suggestions button {
+  min-height: 44px;
+  padding: 9px 13px;
+  font-size: 13px;
+  background: #fafbf5;
+  border-color: var(--ui-border);
+}
+
+.taste-suggestions button:hover:not(:disabled) {
+  background: #e9efdf;
+  border-color: #92aa83;
+}
+
+.taste-count {
+  font-size: 13px !important;
+  color: var(--ui-muted) !important;
+  margin-top: 14px;
+}
+
+.build-map {
+  margin-top: 28px !important;
+  min-height: 56px !important;
+}
+
+.onboarding-footnote {
+  font-size: 13px;
+  color: var(--ui-muted);
+  margin-top: 18px;
+}
+
+.onboarding-story {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .move-onboarding {
+    max-width: 1140px;
+    display: grid;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    gap: 64px;
+    align-items: start;
+    margin-top: 48px;
+  }
+  .move-onboarding .onboarding-heading {
+    text-align: left;
+    margin: 14px 0 0;
+  }
+  .move-onboarding .onboarding-heading h1 {
+    font-size: 64px;
+    margin-top: 18px;
+  }
+  .move-onboarding .onboarding-heading > p {
+    margin: 20px 0 0;
+  }
+  .move-onboarding .move-form {
+    padding: 32px;
+  }
+  .move-onboarding .taste-entry {
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+  .onboarding-story {
+    display: block;
+    margin-top: 32px;
+  }
+  .journey-emblem {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+    border: 1px solid #d1dcc7;
+    border-radius: 16px;
+    color: #557b54;
+    background: linear-gradient(120deg, #e8efdd, #f7efdc);
+  }
+  .journey-emblem > span {
+    max-width: 110px;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.8;
+    letter-spacing: 2px;
+  }
+  .onboarding-story ul {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0;
+    display: grid;
+    gap: 14px;
+  }
+  .onboarding-story li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--ui-muted);
+  }
+  .onboarding-story li svg {
+    color: #4c7550;
+    flex-shrink: 0;
+  }
+}
+
+.taste-confirmation {
+  max-width: 1000px;
+}
+
+.confirmation-list {
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+}
+
+.confirmation-card {
+  padding: 24px;
+  border-radius: var(--ui-radius);
+  box-shadow: 0 4px 16px #193e3207;
+}
+
+.confirmation-card-heading strong {
+  font-size: 17px;
+}
+
+.confirmation-card-heading small, .inline-match > span {
+  font-size: 13px;
+  color: var(--ui-muted);
+}
+
+.inline-match > small {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--ui-muted);
+}
+
+.initial-mode-options button {
+  min-height: 64px;
+  padding: 14px;
+  font-size: 14px;
+  border-radius: 12px;
+}
+
+.initial-mode-options small {
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  .step-indicator {
+    gap: 14px;
+    margin: 24px 0;
+    font-size: 11px;
+  }
+  .step-indicator li {
+    gap: 6px;
+  }
+  .step-indicator li > span {
+    width: 26px;
+    height: 26px;
+  }
+  .onboarding-heading {
+    margin: 30px auto 26px;
+  }
+  .onboarding-heading h1 {
+    font-size: clamp(40px, 11vw, 56px);
+    letter-spacing: -1.8px;
+  }
+  .onboarding-heading > p {
+    font-size: 16px;
+    margin-top: 16px;
+  }
+  .move-form {
+    padding: 24px 20px;
+    border-radius: 22px;
+  }
+  .move-fields {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .move-arrow {
+    display: none;
+  }
+  .taste-entry {
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+  .taste-entry h2 {
+    font-size: 24px;
+  }
+  .confirmation-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,232 @@
+/* Controls: shared TastePassport presentation. */
+
+::selection {
+  background: #d4e2c7;
+  color: #183e33;
+}
+
+.progressive-app :is(button, a, input, select, textarea, summary) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:is(.progressive-app, .account-dialog, .match-dialog) :is(button, input, select, textarea) {
+  font-family: inherit;
+}
+
+:is(.progressive-app, .account-dialog, .match-dialog) :is(button, a, summary):focus-visible {
+  outline: 3px solid #40765a;
+  outline-offset: 4px;
+}
+
+.field-with-icon {
+  min-height: 56px;
+  border-radius: 13px;
+  background: #f4f6ef;
+}
+
+.field-with-icon:focus-within {
+  border-color: var(--ui-ink);
+  box-shadow: none;
+}
+
+.field-with-icon input, .field-with-icon select {
+  font-size: 16px;
+  min-height: 54px;
+}
+
+.progressive-app select, .account-dialog select, .match-dialog select {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-height: 48px;
+  line-height: 1.4;
+  padding: 12px 38px 12px 14px;
+  border: 1px solid var(--ui-border);
+  border-radius: 12px;
+  background-color: var(--ui-surface);
+  color: var(--ui-ink);
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23365346' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  text-overflow: ellipsis;
+  color-scheme: light;
+  box-shadow: 0 2px 0 #193e3108;
+  transition: border-color .16s ease, box-shadow .16s ease, background-color .16s ease;
+}
+
+.progressive-app select:hover:not(:disabled),
+.account-dialog select:hover:not(:disabled),
+.match-dialog select:hover:not(:disabled) {
+  border-color: #9baf7e;
+  background-color: #fffcef;
+}
+
+.progressive-app select:focus-visible,
+.account-dialog select:focus-visible,
+.match-dialog select:focus-visible {
+  border-color: var(--ui-action);
+  box-shadow: 0 0 0 3px #1d513b20;
+  outline: none;
+}
+
+.progressive-app select option,
+.account-dialog select option,
+.match-dialog select option {
+  background: var(--ui-surface);
+  color: var(--ui-ink);
+  font: inherit;
+}
+
+/* Style the opened picker as well as its trigger. Supporting browsers retain
+   native keyboard, typeahead, focus and form behavior. Older browsers keep the
+   accessible platform picker rather than an incomplete scripted replacement. */
+@supports (appearance: base-select) {
+  :is(.progressive-app, .account-dialog, .match-dialog) select,
+  :is(.progressive-app, .account-dialog, .match-dialog) select::picker(select) {
+    appearance: base-select;
+  }
+
+  :is(.progressive-app, .account-dialog, .match-dialog) select::picker(select) {
+    margin-block: 8px;
+    padding: 6px;
+    border: 1px solid var(--ui-border);
+    border-radius: 14px;
+    background: var(--ui-surface);
+    color: var(--ui-ink);
+    box-shadow: 0 16px 40px #193e3124, 0 3px 8px #193e310c;
+    max-block-size: min(360px, 50dvh);
+    max-inline-size: calc(100vw - 32px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    font: 500 14px/1.5 "Manrope", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  :is(.progressive-app, .account-dialog, .match-dialog) select::picker-icon {
+    display: none;
+  }
+
+  :is(.progressive-app, .account-dialog, .match-dialog) select option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-block-size: 44px;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ui-ink);
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  :is(.progressive-app, .account-dialog, .match-dialog) select option:checked {
+    background: #e8f4ef;
+    color: #1d513b;
+    font-weight: 700;
+  }
+
+  :is(.progressive-app, .account-dialog, .match-dialog) select option:is(:hover, :focus-visible) {
+    background: #f3edcf;
+    color: var(--ui-ink);
+    outline: 2px solid var(--ui-action);
+    outline-offset: -2px;
+  }
+
+  :is(.progressive-app, .account-dialog, .match-dialog) select option:disabled {
+    color: var(--ui-muted);
+    opacity: .65;
+  }
+
+  :is(.progressive-app, .account-dialog, .match-dialog) select option::checkmark {
+    color: var(--ui-action);
+  }
+}
+
+.progressive-app .field-with-icon select {
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  padding-left: 0;
+  box-shadow: none;
+}
+
+.mode-category select {
+  margin: 0;
+  width: 100%;
+}
+
+.progressive-app .day-out-stops select {
+  border: 1px solid var(--ui-border);
+}
+
+.taste-input-shell {
+  padding: 12px;
+  border-radius: 16px;
+}
+
+.taste-add-row input {
+  font-size: 16px;
+  min-height: 48px;
+}
+
+.inline-match select {
+  min-height: 52px;
+  font-size: 16px;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.guided-panel :is(input, select), .concierge-drawer .guided-panel :is(input, select) {
+  min-height: 48px;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.mode-category select {
+  font-size: 14px;
+  min-height: 48px;
+  padding: 10px 38px 10px 12px;
+}
+
+.day-out-stops select {
+  font-size: 16px;
+  min-height: 52px;
+}
+
+.account-dialog input, .account-dialog select, .match-dialog select {
+  font-size: 16px;
+  min-height: 52px;
+  border-radius: 12px;
+}
+
+/* Compound fields own one border; their inner input never adds another ring. */
+.progressive-app .field-with-icon,
+.progressive-app .taste-input-shell {
+  border: 2px solid var(--ui-border);
+  box-shadow: none;
+}
+.progressive-app .field-with-icon:focus-within,
+.progressive-app .taste-input-shell:focus-within {
+  border-color: var(--ui-ink);
+  box-shadow: none;
+}
+.progressive-app .field-with-icon :is(input, select),
+.progressive-app .taste-input-shell input,
+.progressive-app .field-with-icon :is(input, select):focus-visible,
+.progressive-app .taste-input-shell input:focus-visible {
+  border: 0;
+  outline: none;
+  box-shadow: none;
+}
+:is(.progressive-app, .account-dialog, .match-dialog) :is(input, select, textarea):focus {
+  outline: none;
+  box-shadow: none;
+  border-color: var(--ui-ink);
+}
+
+.mode-category-tabs { display:flex; flex-wrap:wrap; gap:8px; max-width:100%; }
+.mode-category-tabs button { min-height:44px; border:1px solid #becbb2; border-radius:12px; padding:10px 14px; background:#fffdf5; color:#294b35; font:inherit; font-size:14px; }
+.mode-category-tabs button[aria-pressed="true"] { background:#254e39; border-color:#254e39; color:#fff9df; }

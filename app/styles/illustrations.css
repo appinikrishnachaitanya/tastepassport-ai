@@ -1,0 +1,39 @@
+/* Original, city-neutral artwork: decorative only; real discovery photos remain Qloo sourced. */
+.progressive-app {
+  background-image:url('/illustrations/city-garden.svg');
+  background-position:center bottom;
+  background-repeat:no-repeat;
+  background-size:100% auto;
+  padding-bottom:170px;
+}
+.journey-illustration { display:block; width:100%; max-width:440px; height:auto; margin:0 auto 12px; pointer-events:none; user-select:none; }
+.onboarding-story ul { position:relative; }
+.passport-cover { background:radial-gradient(ellipse at 90% 15%,#8ca66433,transparent 60%),linear-gradient(115deg,#193e31,#31563d); border-color:#486b49; color:#fff8df; }
+.passport-cover h1 { color:#fffdf5; }
+.passport-cover h1 em { color:#f5dc92; }
+.passport-cover .micro-label,.passport-cover .cover-journey,.passport-cover .cover-copy > p { color:#e7eedb; }
+.passport-cover .passport-taste-preview span { background:#ffffff12; color:#fff8df; border-color:#aabb8e70; }
+.passport-cover .cover-connection { color:#fff8df; border-color:#bac99a; background:#ffffff08; }
+.passport-cover .cover-art { transform:none; min-height:210px; }
+.cover-illustration { width:100%; height:auto; pointer-events:none; user-select:none; }
+.passport-cover .cover-stamp { left:auto; right:0; bottom:0; background:#fffdf5ed; color:var(--ui-ink); border-color:#8b9c75; }
+.together-heading { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-top:20px; }
+.together-heading > div { min-width:0; }
+.together-heading h3 { font-size:clamp(24px,3vw,34px); line-height:1.25; margin-top:12px; }
+.together-heading img { width:clamp(140px,24vw,230px); height:auto; flex-shrink:0; pointer-events:none; user-select:none; }
+@media(max-width:1099px) {
+  .onboarding-story { display:block; margin-top:24px; }
+  .journey-illustration { max-width:300px; }
+  .onboarding-story ul { display:none; }
+}
+@media(max-width:640px) {
+  .progressive-app { padding-bottom:110px; background-size:900px auto; }
+  .onboarding-story { margin-top:12px; }
+  .journey-illustration { max-width:230px; margin-bottom:0; }
+  .together-heading { gap:12px; align-items:center; }
+  .together-heading img { width:100px; }
+  .together-heading .micro-label { font-size:9px; letter-spacing:1px; }
+  .together-heading h3 { font-size:23px; }
+}
+@media(prefers-reduced-data:reduce) { .progressive-app { background-image:none; } }
+@media print { .progressive-app { background-image:none; } .journey-illustration,.cover-art,.together-heading img { display:none; } }
